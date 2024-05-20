@@ -1,0 +1,9 @@
+Para Ejecutar el docker:
+1.- Realizar un docker pull
+2.- Ejecutar el docker-compose
+COMANDOS:
+- docker build -t mecanica .
+- docker-compose up
+
+PUERTOS : 8080
+INICIO DE LA PÁGINA: http://localhost:8080/MECAPRO-1.0-SNAPSHOT/index.jsp
