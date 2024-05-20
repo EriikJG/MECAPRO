@@ -26,10 +26,10 @@ public class ControladoraTest {
     }
 
     @Test
-    public void testRegistrarVehiculoConPlacaFormatoEcuatoriano() {
+    public void dadoClienteYVehiculoConPlacaFormatoEcuatoriano_cuandoSeRegistraVehiculo_entoncesVehiculoEsRegistrado() {
 
-        cliente = new Cliente(1237167821, "Juan", "Perez", "0987654321", "juan.perez@example.com", "Direccion 123", new ArrayList<>(), null);
-        String placa = "ABC-1354";
+        cliente = new Cliente(1234167891, "Juan", "Perez", "0987654321", "juan.perez@example.com", "Direccion 123", new ArrayList<>(), null);
+        String placa = "ASC-2254";
         String marca = "Toyota";
         String anioFab = "2020";
         List<Reparacion> reparaciones = new ArrayList<>();
@@ -47,9 +47,9 @@ public class ControladoraTest {
     }
 
     @Test
-    public void testNoRegistrarVehiculoConPlacaExistente() {
-        cliente = new Cliente(120911271, "Juan", "Perez", "0987654321", "juan.perez@example.com", "Direccion 123", new ArrayList<>(), null);
-        String placa = "ACD-1234";
+    public void dadoVehiculoConPlacaExistente_cuandoSeIntentaRegistrarOtraVez_entoncesVehiculoNoEsRegistrado() {
+        cliente = new Cliente(1234567899, "Juan", "Perez", "0987654321", "juan.perez@example.com", "Direccion 123", new ArrayList<>(), null);
+        String placa = "ACD-0234";
         String marca = "Toyota";
         String anioFab = "2020";
         List<Reparacion> reparaciones = new ArrayList<>();
@@ -69,19 +69,19 @@ public class ControladoraTest {
         assertEquals(1, count);
     }
     @Test
-    public void testRegistroReparacionAveriaExitoso() {
+    public void dadoVehiculoConPlacaYReparacionValida_cuandoSeRegistraReparacion_entoncesReparacionEsRegistrada() {
         // Arrange
         String descripcion = "Cambio de aceite2";
         String costo = "50";
 
         // Act
-        Automovil automovilRecuperado = controladora.encontrarAuto("ABC-1354");
+        Automovil automovilRecuperado = controladora.encontrarAuto("ACD-0234");
         assertNotNull(automovilRecuperado);
         int cantidadReparacionesAntes = automovilRecuperado.getReparaciones().size();
         controladora.crearReparacion(descripcion, costo, automovilRecuperado);
 
         // Assert
-        Automovil automovilConReparaciones = controladora.encontrarAuto("ABC-1354");
+        Automovil automovilConReparaciones = controladora.encontrarAuto("ACD-0234");
         assertNotNull(automovilConReparaciones);
         int cantidadReparacionesDespues = automovilConReparaciones.getReparaciones().size();
         assertEquals("Se esperaba que se registrara una nueva reparación", cantidadReparacionesAntes , cantidadReparacionesDespues);
@@ -90,14 +90,15 @@ public class ControladoraTest {
 
 
     @Test(expected = IllegalArgumentException.class)
-    public void testRegistrarReparacionAveriaConInformacionIncompleta() {
+    public void dadoReparacionConInformacionIncompleta_cuandoSeIntentaRegistrar_entoncesLanzaExcepcion() {
         String descripcion = "";
         String costo = "50";
-        Automovil automovil = controladora.encontrarAuto("ABC-1354");
+        Automovil automovil = controladora.encontrarAuto("ACD-0234");
 
         /// assertNotNull("El automóvil no debe ser nulo", automovil);
 
-        // Intentar registrar la reparación con información incompleta        controladora.crearReparacion(descripcion, costo, automovil);
+        // Intentar registrar la reparación con información incompleta
+        controladora.crearReparacion(descripcion, costo, automovil);
 
         // Verificar que la reparación no esté registrada
         List<Reparacion> reparaciones = automovil.getReparaciones();
@@ -106,9 +107,9 @@ public class ControladoraTest {
 
 
     @Test
-    public void testCrearClienteExitoso() {
+    public void dadoDatosClienteValidos_cuandoSeCreaCliente_entoncesClienteEsCreado() {
         // Arrange
-        int cedula = 1234567890;
+        int cedula = 1230567890;
         String nombre = "Juan";
         String apellido = "Perez";
         String correo = "juan@example.com";
@@ -124,9 +125,9 @@ public class ControladoraTest {
     }
 
     @Test
-    public void testCrearClienteConCedulaExcediendoMaximoCaracteres() {
+    public void dadoClienteConCedulaExcediendoMaximoCaracteres_cuandoSeIntentaCrearCliente_entoncesLanzaExcepcion() {
         // Arrange
-        int cedula = 454645650; // Esto excede el máximo de caracteres permitidos
+        int cedula = 454640650; // Esto excede el máximo de caracteres permitidos
         String nombre = "Juan";
         String apellido = "Perez";
         String correo = "juan@example.com";
