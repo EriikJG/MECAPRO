@@ -15,21 +15,21 @@
 <form class="user" action="SvUsuario" method="POST">
 
     <input type="text" class="form-control form-control-user" id="cedula" name="cedula"
-           placeholder="cedula">
+           placeholder="cedula" required>
 
     <input type="text" class="form-control form-control-user" id="nombre" name="nombre"
-           placeholder="nombre">
+           placeholder="nombre" required>
 
     <input type="text" class="form-control form-control-user" id="apellido" name="apellido"
-           placeholder="apellido">
+           placeholder="apellido" required>
 
     <input type="email" class="form-control form-control-user" id="correo" name="correo"
-           placeholder="correo">
+           placeholder="correo" required>
 
-    <input type="tel" id="telefono" name="telefono" pattern="09[0-9]{8}" required placeholder="telefono">
+    <input type="tel" id="telefono" name="telefono" pattern="09[0-9]{8}" required placeholder="telefono" required>
 
     <input type="text" class="form-control form-control-user" id="direccion" name="direccion"
-           placeholder="Direccion">
+           placeholder="Direccion" required>
 
     <button class="agregarUsuario" type="submit">
         Agregar Usuario
