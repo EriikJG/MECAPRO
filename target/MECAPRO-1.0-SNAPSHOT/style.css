@@ -1,0 +1,45 @@
+* {
+    border: 1px solid #ff0000;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img {
+    width: 20%;
+    height: 70%;
+}
+
+.banner {
+    border: none;
+    display: flex;
+
+}
+
+nav ul {
+    border: none;
+    margin: 0px;
+    padding: 0%;
+    list-style-type: none;
+    text-align: center;
+    background-color: hsl(240, 100%, 50%);
+    color: #FFFFFF;
+}
+
+nav ul li {
+    /*convertir de bloque a linea*/
+
+    display: inline-block;
+
+}
+
+main div {
+    width: 100px;
+    height: 100px;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+}
